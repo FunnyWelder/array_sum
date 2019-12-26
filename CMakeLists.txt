@@ -14,11 +14,14 @@ set(LINKER_FLAGS4 -mwindows)
 
 add_subdirectory(googletest)
 
+include_directories(src)
 include_directories(googletest/googletest/include)
 
-add_executable(main main.cpp lib.cpp)
-add_executable(tests tests.cpp lib.cpp)
+set(SOURCE_FILES lib.cpp)
 
-add_executable(lab_3 main.cpp lib.cpp lib.h tests.cpp)
+add_executable(main main.cpp ${SOURCE_FILES})
+add_executable(tests tests.cpp ${SOURCE_FILES})
+
+add_executable(lab_3 main.cpp lib.cpp lib.cpp src/lib.h)
 
 target_link_libraries(tests gtest)
